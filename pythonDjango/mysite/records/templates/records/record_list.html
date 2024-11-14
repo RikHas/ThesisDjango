@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список</title>
+</head>
+<body>
+    <h1>Список</h1>
+    <ul>
+        {% for record in records %}
+            <li>
+                <h2>{{ record.title }}</h2>
+                <p>{{ record.created_at|date:"d M Y" }}</p>
+                <h3>{{ record.description }}</h3>
+                <a href="{% url 'delete_record' record.id %}">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_record' %}">Добавить запись</a>
+</body>
+</html>
